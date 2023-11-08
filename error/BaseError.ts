@@ -15,7 +15,6 @@ class BaseError extends Error {
       this.httpCode = httpCode;
       this.isOperational = isOperational;
       res.status(400).send({ error: this.name, message: this.message });
-
     }
     
 }    
