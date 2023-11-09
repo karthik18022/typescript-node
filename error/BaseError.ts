@@ -5,7 +5,7 @@ class BaseError extends Error {
     public readonly httpCode: HttpStatusCode;
     public readonly isOperational: boolean;
     
-    constructor(name: string, httpCode: HttpStatusCode, description: string, isOperational: boolean, res: Response) {
+    constructor(name: string, httpCode: HttpStatusCode, description: string, isOperational: boolean, res: any) {
       super(description);
       Object.setPrototypeOf(this, new.target.prototype);
     
@@ -14,7 +14,7 @@ class BaseError extends Error {
       this.name = name;
       this.httpCode = httpCode;
       this.isOperational = isOperational;
-      res.status(400).send({ error: this.name, message: this.message });
+      res.send({ error: this.name, message: this.message });
     }
     
 }    

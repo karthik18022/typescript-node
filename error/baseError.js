@@ -8,7 +8,7 @@ class BaseError extends Error {
         this.name = name;
         this.httpCode = httpCode;
         this.isOperational = isOperational;
-        res.status(400).send({ error: this.name, message: this.message });
+        res.send({ error: this.name, message: this.message });
     }
 }
 module.exports = BaseError;

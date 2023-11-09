@@ -14,7 +14,7 @@ exports.getExternalDataCall = async(req, res) => {
     axios.get(apiUrl, config)
   .then( async (response)  => {
     const value = response.data.values;
-    const newExternalData = new ExternalData( {
+    const newExternalData = new ExternalData({
         apiRequests: apiUrl,
         apiResponse: 'success',
         data: value
@@ -29,5 +29,4 @@ exports.getExternalDataCall = async(req, res) => {
     console.error(error);
   });
   return res;
-
 }

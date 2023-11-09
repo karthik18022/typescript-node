@@ -1,20 +1,24 @@
 import express, { Express, Request, Response } from 'express';
 
 import { Sequelize } from 'sequelize';
+import bodyParser from 'body-parser';
 // import { getClient } from './config/dbconfig.js';
 require('dotenv').config();
 import Address from './models/Address';
 import User from './models/User';
-import ExternalData  from './models/externalData'
+import ExternalData  from './models/ExternalData'
 import swaggerDocs from './Utils/swagger';
 const app: Express = express();
 const UserEndpoint = require('./router/userRouter');
 const externalCallEndpoint = require('./router/externalcall.ts')
+const fileEndpoint = require('./router/fileUploadRouter')
 
-app.use(express.json());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // Middleware to parse form data
 app.use('/user', UserEndpoint);
-app.use('/external', externalCallEndpoint)
-
+app.use('/external', externalCallEndpoint);
+app.use('/file', fileEndpoint);
 
 const port = process.env.PORT;
 

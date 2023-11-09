@@ -1,6 +1,6 @@
-const express = require('express');
+const express1 = require('express');
 
-const externalRouter = express.Router();
+const externalRouter = express1.Router();
 
 const {getExternalDataCall} = require('../service/externalService.ts')
 
